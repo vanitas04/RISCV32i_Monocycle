@@ -141,7 +141,7 @@ begin
         o_DATA  => w_MEM
     );
 
-    u_MUX_MEM2REG: entity work.mux_memtoreg
+    u_MUX_MEM2REG: entity work.mux21
     port map (
         i_A    => w_ULA,
         i_B    => w_MEM,

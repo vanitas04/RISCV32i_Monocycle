@@ -102,7 +102,7 @@ begin
           i_WRaddr  	=> w_INST(11 downto 7),
           i_RS1 	=> w_INST(19 downto 15),
           i_RS2 	=> w_INST(24 downto 20),
-          i_DATA 	=> w_ULA, 
+          i_DATA 	=> w_REG_WRITE_DATA, 
           o_RS1 	=> w_RS1,	
           o_RS2 	=> w_RS2	
 	);

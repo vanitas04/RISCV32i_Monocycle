@@ -8,7 +8,7 @@ entity RISCV32i is
     		i_RSTn	: in  std_logic;
             
             -- sinais de para depuração
-            o_INST		: out std_logic_vector(31 downto 0);
+            o_INST	: out std_logic_vector(31 downto 0);
             o_OPCODE	: out std_logic_vector(6 downto 0);
             o_RD_ADDR	: out std_logic_vector(4 downto 0);
             o_RS1_ADDR 	: out std_logic_vector(4 downto 0);
@@ -76,7 +76,7 @@ begin
     
     u_SOMA4 : entity work.somador -- calcula o endereço da próxima instrução
 	port map (	
-    	i_A		=> w_PC, 
+    	i_A	=> w_PC, 
     	i_B  	=> "00000000000000000000000000000100",  
         o_DATA  => w_PC4
     );
@@ -99,7 +99,7 @@ begin
           i_CLK  	=> i_CLK, 
           i_RSTn	=> i_RSTn, 
           i_WRena	=> w_REG_WRITE,
-          i_WRaddr  => w_INST(11 downto 7),
+          i_WRaddr  	=> w_INST(11 downto 7),
           i_RS1 	=> w_INST(19 downto 15),
           i_RS2 	=> w_INST(24 downto 20),
           i_DATA 	=> w_ULA, 
@@ -124,8 +124,8 @@ begin
   
     u_MUX_ULA : entity work.mux21
     port map (
-    	i_A		=> w_RS2, 
-        i_B		=> w_IMM,
+    	i_A	=> w_RS2, 
+        i_B	=> w_IMM,
         i_SEL	=> w_ALU_SRC,
         o_MUX   => w_ULAb 
     );
@@ -133,7 +133,7 @@ begin
      u_MEM_DADOS: entity work.memoria_dados
      port map (
         i_CLK   => i_CLK,
-        i_RSTn => i_RSTn,
+        i_RSTn 	=> i_RSTn,
         i_ADDR  => w_ULA,
         i_WR    => w_MEM_WRITE,
         i_RD    => w_MEM_READ,
@@ -150,7 +150,7 @@ begin
     );
     
     --Sinais para depuração com o testbench
-    o_INST 		<= w_INST; -- depuração do resultado da ula
+    o_INST 	<= w_INST; -- depuração do resultado da ula
     o_OPCODE	<= w_INST(6 downto 0);
     o_RD_ADDR	<= w_INST(11 downto 7);
     o_RS1_ADDR 	<= w_INST(19 downto 15);
